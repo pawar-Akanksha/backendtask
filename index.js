@@ -5,6 +5,7 @@ dotenv.config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const Authentication = require("./middelware/usermiddleware");
 const userRoutes = require("./routes/userRoutes");
 
 
@@ -29,7 +30,7 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
 
 app.use(express.json());
 app.use(bodyParser());
-  app.use(userRoutes);
+  app.use(userRoutes,Authentication);
 
 app.get('/test', (req,res) => {
   res.json('express server test OK');
