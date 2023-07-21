@@ -3,7 +3,7 @@
 const Product = require('../modules/ProductModel');
 
 // Create a new product
-exports.createProduct = async (req, res) => {
+module.exports.createProduct = async (req, res) => {
   try {
     const product = new Product(req.body);
     await product.save();
@@ -14,7 +14,7 @@ exports.createProduct = async (req, res) => {
 };
 
 // Get list of products with filtering and pagination
-exports.getProducts = async (req, res) => {
+module.exports.getProducts = async (req, res) => {
   const { category, priceBand, name, page, limit } = req.query;
   const filter = {};
 
@@ -33,7 +33,7 @@ exports.getProducts = async (req, res) => {
 };
 
 // Update a product
-exports.updateProduct = async (req, res) => {
+module.exports.updateProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndUpdate(
       req.params.productId,
@@ -47,7 +47,7 @@ exports.updateProduct = async (req, res) => {
 };
 
 // Delete a product
-exports.deleteProduct = async (req, res) => {
+module.exports.deleteProduct = async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.productId);
     res.sendStatus(204);
