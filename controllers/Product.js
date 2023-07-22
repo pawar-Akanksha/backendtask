@@ -15,7 +15,7 @@ module.exports.createProduct = async (req, res) => {
 
 // Get list of products with filtering and pagination
 module.exports.getProducts = async (req, res) => {
-  const { category, priceBand, name, page, limit } = req.query;
+  const { category, price, name, page, limit } = req.query;
   const filter = {};
 
   if (category) filter.category = category;

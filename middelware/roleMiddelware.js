@@ -1,6 +1,6 @@
 // middlewares/rolesMiddleware.js
 
-const rolesMiddleware = (requiredRole) => {
+const rolesMiddleware = (requiredRole) => {// admin
     return (req, res, next) => {
       const userRole = req.user.role;
       if (userRole === requiredRole) {
